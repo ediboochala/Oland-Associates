@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800&family=DM+Mono:wght@300;400;500&display=swap');
+
+:root {
+  /* Core palette */
+  --ink:          #080610;
+  --ink-2:        #0E0B1E;
+  --ink-3:        #140F2A;
+  --purple:       #251959;
+  --purple-mid:   #3A2480;
+  --purple-glow:  rgba(58,36,128,0.5);
+  --ember:        #E8630A;
+  --ember-bright: #F97316;
+  --ember-pale:   rgba(232,99,10,0.1);
+  --ember-border: rgba(232,99,10,0.25);
+
+  /* Surface */
+  --surface-1:    rgba(255,255,255,0.03);
+  --surface-2:    rgba(255,255,255,0.06);
+  --surface-3:    rgba(255,255,255,0.09);
+  --border:       rgba(255,255,255,0.07);
+  --border-hover: rgba(232,99,10,0.3);
+
+  /* Type */
+  --text-primary:   #F4F2FC;
+  --text-secondary: #C4BEDF;
+  --text-muted:     #8C85B4;
+
+  /* Typography */
+  --font-serif:  'Montserrat', sans-serif;
+  --font-sans:   'Montserrat', sans-serif;
+  --font-mono:   'DM Mono', monospace;
+
+  /* Easing */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-silk:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--ink);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Grain overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+img, svg { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+ul { list-style: none; }
+
+::selection {
+  background: var(--ember);
+  color: white;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--ink); }
+::-webkit-scrollbar-thumb { background: var(--purple-mid); border-radius: 2px; }
