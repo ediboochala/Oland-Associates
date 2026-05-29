@@ -45,8 +45,8 @@ export default function Footer() {
               <Image
                 src="/Oland logo wh.png"
                 alt="Oland Associates Enterprises"
-                width={220}
-                height={60}
+                width={320}
+                height={87}
                 style={{
                   objectFit: 'contain',
                   display: 'block',
