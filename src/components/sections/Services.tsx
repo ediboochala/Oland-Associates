@@ -107,7 +107,7 @@ export default function Services() {
               />
 
               {/* Index */}
-              <div style={{ position: 'absolute', top: 'clamp(1.5rem,3vw,2rem)', right: 'clamp(1.5rem,3vw,2rem)', fontFamily: 'var(--font-serif)', fontSize: '5rem', fontWeight: 300, color: 'rgba(255,255,255,0.03)', lineHeight: 1, userSelect: 'none' }}>
+              <div style={{ position: 'absolute', top: 'clamp(1.5rem,3vw,2rem)', right: 'clamp(1.5rem,3vw,2rem)', fontFamily: 'var(--font-serif)', fontSize: '5rem', fontWeight: 300, color: 'var(--index-ghost)', lineHeight: 1, userSelect: 'none' }}>
                 {s.index}
               </div>
 

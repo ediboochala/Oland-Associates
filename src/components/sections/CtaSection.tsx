@@ -16,12 +16,12 @@ export default function CtaSection() {
 
   return (
     <section id="contact" ref={ref} style={{ padding: 'clamp(5rem,10vw,9rem) 0', position: 'relative', overflow: 'hidden' }}>
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, var(--ink-3) 0%, var(--ink) 50%, rgba(37,25,89,0.2) 100%)' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, var(--ink-3) 0%, var(--ink) 50%, var(--ink-2) 100%)' }} />
       <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 50%, rgba(232,99,10,0.08), transparent 65%)', pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: 'linear-gradient(90deg, transparent, var(--ember), transparent)' }} />
 
       {/* Decorative serif text */}
-      <div style={{ position: 'absolute', bottom: '-5%', left: '50%', transform: 'translateX(-50%)', fontFamily: 'var(--font-serif)', fontSize: 'clamp(8rem,20vw,18rem)', fontWeight: 300, color: 'rgba(255,255,255,0.02)', lineHeight: 1, whiteSpace: 'nowrap', userSelect: 'none', pointerEvents: 'none', letterSpacing: '-0.04em' }}>
+      <div style={{ position: 'absolute', bottom: '-5%', left: '50%', transform: 'translateX(-50%)', fontFamily: 'var(--font-serif)', fontSize: 'clamp(8rem,20vw,18rem)', fontWeight: 300, color: 'var(--watermark)', lineHeight: 1, whiteSpace: 'nowrap', userSelect: 'none', pointerEvents: 'none', letterSpacing: '-0.04em' }}>
         Let's Build
       </div>
 
@@ -71,12 +71,12 @@ export default function CtaSection() {
                 display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
                 fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.82rem', letterSpacing: '0.1em', textTransform: 'uppercase',
                 padding: '1.15rem 2.5rem', borderRadius: 3,
-                border: '1px solid rgba(255,255,255,0.12)', color: 'var(--text-secondary)',
+                border: '1px solid var(--btn-outline)', color: 'var(--text-secondary)',
                 transition: 'all 0.3s', background: 'none',
                 textDecoration: 'none',
               }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.3)'; (e.currentTarget as HTMLElement).style.color = 'var(--text-primary)' }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.12)'; (e.currentTarget as HTMLElement).style.color = 'var(--text-secondary)' }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--btn-outline-hover)'; (e.currentTarget as HTMLElement).style.color = 'var(--text-primary)' }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--btn-outline)'; (e.currentTarget as HTMLElement).style.color = 'var(--text-secondary)' }}
             >
               Call Directly
             </a>

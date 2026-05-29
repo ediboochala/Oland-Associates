@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
+import { useTheme } from '@/lib/theme-context'
 
 const stats = [
   { value: '8+', label: 'Years Operating' },
@@ -12,8 +13,8 @@ const stats = [
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const { theme } = useTheme()
 
-  // Particle field effect
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -41,6 +42,8 @@ export default function Hero() {
       })
     }
 
+    const lineColor = theme === 'light' ? 'rgba(58,36,128,0.25)' : 'rgba(58,36,128,0.15)'
+
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       particles.forEach(p => {
@@ -54,7 +57,6 @@ export default function Hero() {
         ctx.fillStyle = `rgba(232,99,10,${p.opacity})`
         ctx.fill()
       })
-      // draw connection lines
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x
@@ -64,7 +66,8 @@ export default function Hero() {
             ctx.beginPath()
             ctx.moveTo(particles[i].x, particles[i].y)
             ctx.lineTo(particles[j].x, particles[j].y)
-            ctx.strokeStyle = `rgba(58,36,128,${0.15 * (1 - dist / 120)})`
+            const alpha = (theme === 'light' ? 0.25 : 0.15) * (1 - dist / 120)
+            ctx.strokeStyle = `rgba(58,36,128,${alpha})`
             ctx.lineWidth = 0.5
             ctx.stroke()
           }
@@ -74,7 +77,7 @@ export default function Hero() {
     }
     draw()
     return () => { cancelAnimationFrame(animId); window.removeEventListener('resize', resize) }
-  }, [])
+  }, [theme])
 
   return (
     <section id="hero" style={{
@@ -86,32 +89,33 @@ export default function Hero() {
       overflow: 'hidden',
       margin: '5.5rem clamp(0.75rem, 2vw, 1.5rem) clamp(0.75rem, 2vw, 1.5rem)',
       borderRadius: 20,
-      border: '1px solid rgba(255,255,255,0.09)',
-      boxShadow: '0 8px 64px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.03)',
+      border: '1px solid var(--hero-border)',
+      boxShadow: 'var(--hero-shadow)',
+      transition: 'border-color 0.35s, box-shadow 0.35s',
     }}>
       {/* Background layers */}
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, #0E0B1E 0%, #080610 55%, #050410 100%)' }} />
-      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 70% 60% at 75% 40%, rgba(37,25,89,0.7) 0%, transparent 65%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(160deg, var(--hero-g1) 0%, var(--hero-g2) 55%, var(--hero-g3) 100%)`, transition: 'background 0.35s' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 70% 60% at 75% 40%, var(--purple-glow) 0%, transparent 65%)', pointerEvents: 'none', transition: 'background 0.35s' }} />
       <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 50% 40% at 20% 75%, rgba(232,99,10,0.08) 0%, transparent 55%)', pointerEvents: 'none' }} />
 
       {/* Particle canvas */}
-      <canvas ref={canvasRef} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.6 }} />
+      <canvas ref={canvasRef} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.7 }} />
 
       {/* Fine grid */}
       <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none',
-        backgroundImage: 'linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px)',
+        backgroundImage: `linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)`,
         backgroundSize: '72px 72px',
         maskImage: 'radial-gradient(ellipse at 40% 50%, black 20%, transparent 75%)',
       }} />
 
-      {/* Large ambient number background */}
+      {/* Large ambient text */}
       <div style={{
         position: 'absolute', right: '-3%', top: '50%', transform: 'translateY(-50%)',
         fontFamily: 'var(--font-serif)', fontSize: 'clamp(14rem, 30vw, 28rem)',
-        fontWeight: 300, color: 'rgba(37,25,89,0.18)', lineHeight: 1,
+        fontWeight: 300, color: 'var(--purple-ghost)', lineHeight: 1,
         userSelect: 'none', pointerEvents: 'none', letterSpacing: '-0.05em',
-        whiteSpace: 'nowrap',
+        whiteSpace: 'nowrap', transition: 'color 0.35s',
       }}>OAE</div>
 
       <div style={{ position: 'relative', zIndex: 2, maxWidth: 1280, margin: '0 auto', padding: '0 clamp(1.25rem,4vw,3rem)', width: '100%' }}>
@@ -199,11 +203,11 @@ export default function Hero() {
               fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.8rem',
               letterSpacing: '0.12em', textTransform: 'uppercase',
               padding: '1.1rem 2.25rem', borderRadius: 3,
-              border: '1px solid rgba(255,255,255,0.12)', color: 'var(--text-secondary)',
+              border: '1px solid var(--btn-outline)', color: 'var(--text-secondary)',
               transition: 'all 0.3s', background: 'none', cursor: 'pointer',
             }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'; e.currentTarget.style.color = 'var(--text-primary)' }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'; e.currentTarget.style.color = 'var(--text-secondary)' }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--btn-outline-hover)'; e.currentTarget.style.color = 'var(--text-primary)' }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--btn-outline)'; e.currentTarget.style.color = 'var(--text-secondary)' }}
           >
             Our Capabilities
           </button>

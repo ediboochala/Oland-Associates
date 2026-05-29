@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
+import { useTheme } from '@/lib/theme-context'
 
 const links = [
   { label: 'Services', href: '#services' },
@@ -12,9 +13,34 @@ const links = [
   { label: 'Contact', href: '#contact' },
 ]
 
+function SunIcon() {
+  return (
+    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden>
+      <circle cx="8.5" cy="8.5" r="3.5" stroke="currentColor" strokeWidth="1.5"/>
+      <line x1="8.5" y1="1" x2="8.5" y2="3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      <line x1="8.5" y1="14" x2="8.5" y2="16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      <line x1="1" y1="8.5" x2="3" y2="8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      <line x1="14" y1="8.5" x2="16" y2="8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      <line x1="3.44" y1="3.44" x2="4.85" y2="4.85" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      <line x1="12.15" y1="12.15" x2="13.56" y2="13.56" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      <line x1="3.44" y1="13.56" x2="4.85" y2="12.15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      <line x1="12.15" y1="4.85" x2="13.56" y2="3.44" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  )
+}
+
+function MoonIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+      <path d="M14 10.5A6.5 6.5 0 0 1 5.5 2c0-.55.07-1.08.2-1.58A6.5 6.5 0 1 0 14 10.5z" fill="currentColor"/>
+    </svg>
+  )
+}
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const { theme, toggle } = useTheme()
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 50)
@@ -41,9 +67,9 @@ export default function Navbar() {
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 900,
           padding: scrolled ? '0.875rem 0' : '1.4rem 0',
           transition: 'padding 0.4s ease, background 0.4s ease, border-color 0.4s ease',
-          background: scrolled ? 'rgba(8,6,16,0.88)' : 'transparent',
+          background: scrolled ? 'var(--nav-bg)' : 'transparent',
           backdropFilter: scrolled ? 'blur(20px)' : 'none',
-          borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
+          borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
         }}
       >
         <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 clamp(1.25rem, 4vw, 3rem)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -86,7 +112,26 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            {/* Theme toggle */}
+            <button
+              onClick={toggle}
+              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              style={{
+                width: 38, height: 38, borderRadius: 8,
+                border: '1px solid var(--border)',
+                background: 'var(--surface-1)',
+                color: 'var(--text-secondary)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                transition: 'all 0.25s',
+                flexShrink: 0,
+              }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--ember)'; e.currentTarget.style.color = 'var(--ember)' }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-secondary)' }}
+            >
+              {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+            </button>
+
             <button
               onClick={() => scrollTo('#contact')}
               style={{
@@ -98,7 +143,7 @@ export default function Navbar() {
                 transition: 'all 0.3s ease',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.background = '#F97316'
+                e.currentTarget.style.background = 'var(--ember-bright)'
                 e.currentTarget.style.boxShadow = '0 0 44px rgba(232,99,10,0.55)'
                 e.currentTarget.style.transform = 'translateY(-1px)'
               }}
@@ -110,6 +155,7 @@ export default function Navbar() {
             >
               Engage Us
             </button>
+
             {/* Hamburger */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -135,7 +181,7 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
             style={{
               position: 'fixed', top: 72, left: 0, right: 0, zIndex: 899,
-              background: 'rgba(8,6,16,0.97)', backdropFilter: 'blur(20px)',
+              background: 'var(--nav-bg)', backdropFilter: 'blur(20px)',
               borderBottom: '1px solid var(--border)',
               padding: '1.5rem clamp(1.25rem, 4vw, 3rem) 2rem',
               display: 'flex', flexDirection: 'column', gap: '1.25rem',
@@ -152,6 +198,19 @@ export default function Navbar() {
                 {link.label}
               </button>
             ))}
+            <button
+              onClick={toggle}
+              style={{
+                display: 'flex', alignItems: 'center', gap: '0.6rem',
+                fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: '0.85rem',
+                letterSpacing: '0.06em', textTransform: 'uppercase',
+                color: 'var(--text-secondary)', background: 'none', border: 'none',
+                cursor: 'pointer', textAlign: 'left', padding: '0.5rem 0',
+              }}
+            >
+              {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+              {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

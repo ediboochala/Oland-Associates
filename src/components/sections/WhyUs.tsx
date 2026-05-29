@@ -107,7 +107,7 @@ export default function WhyUs() {
                       <span style={{ fontFamily: 'var(--font-sans)', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>{m.label}</span>
                       <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', color: 'var(--ember-bright)', fontWeight: 500 }}>{m.value}%</span>
                     </div>
-                    <div style={{ height: 2, background: 'rgba(255,255,255,0.06)', borderRadius: 99, overflow: 'hidden' }}>
+                    <div style={{ height: 2, background: 'var(--progress-track)', borderRadius: 99, overflow: 'hidden' }}>
                       <motion.div
                         initial={{ width: 0 }}
                         animate={inView ? { width: `${m.value}%` } : { width: 0 }}

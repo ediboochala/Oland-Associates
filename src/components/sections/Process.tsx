@@ -32,7 +32,7 @@ export default function Process() {
   const inView = useInView(ref, { once: true, margin: '-60px' })
 
   return (
-    <section id="process" ref={ref} style={{ padding: 'clamp(5rem,10vw,9rem) 0', background: 'rgba(255,255,255,0.01)', position: 'relative', overflow: 'hidden' }}>
+    <section id="process" ref={ref} style={{ padding: 'clamp(5rem,10vw,9rem) 0', background: 'var(--section-tint)', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: 'linear-gradient(90deg, transparent, var(--purple-mid), transparent)' }} />
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 1, background: 'linear-gradient(90deg, transparent, var(--purple-mid), transparent)' }} />
 
@@ -71,7 +71,7 @@ export default function Process() {
               onMouseLeave={e => (e.currentTarget.style.background = 'var(--ink)')}
             >
               {/* step number watermark */}
-              <div style={{ position: 'absolute', bottom: '-0.5rem', right: '1rem', fontFamily: 'var(--font-serif)', fontSize: '8rem', fontWeight: 300, color: 'rgba(255,255,255,0.025)', lineHeight: 1, userSelect: 'none', pointerEvents: 'none' }}>{s.num}</div>
+              <div style={{ position: 'absolute', bottom: '-0.5rem', right: '1rem', fontFamily: 'var(--font-serif)', fontSize: '8rem', fontWeight: 300, color: 'var(--watermark)', lineHeight: 1, userSelect: 'none', pointerEvents: 'none' }}>{s.num}</div>
 
               {/* Connector dot (not on last) */}
               {i < steps.length - 1 && (

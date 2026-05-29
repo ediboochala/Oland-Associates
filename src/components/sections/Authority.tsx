@@ -99,7 +99,7 @@ export default function Authority() {
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1px', background: 'var(--border)', borderRadius: 10, overflow: 'hidden' }}>
                   {metrics.map(m => (
-                    <div key={m.label} style={{ background: 'rgba(8,6,16,0.8)', padding: '1.25rem' }}>
+                    <div key={m.label} style={{ background: 'var(--card-bg)', padding: '1.25rem' }}>
                       <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.75rem', fontWeight: 600, color: 'var(--ember-bright)', letterSpacing: '-0.02em', lineHeight: 1 }}>{m.val}</div>
                       <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6rem', color: 'var(--text-muted)', letterSpacing: '0.12em', textTransform: 'uppercase', marginTop: '0.35rem' }}>{m.label}</div>
                     </div>
