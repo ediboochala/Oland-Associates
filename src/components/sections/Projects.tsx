@@ -2,56 +2,51 @@
 
 import { useRef, useState } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 import { staggerContainer, staggerItem } from '@/lib/animations'
 
 const projects = [
   {
     id: 1, category: 'solar',
     title: '200kW Commercial Rooftop Solar',
-    client: 'Lagos Island Office Estate',
-    year: '2024', outcome: '72% reduction in energy costs',
-    bg: 'linear-gradient(145deg, #0E0B1E 0%, #251959 100%)',
-    icon: '◐',
+    client: 'Kano Commercial District',
+    year: '2026', outcome: '72% reduction in energy costs',
+    img: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=75&fit=crop',
   },
   {
     id: 2, category: 'materials',
     title: 'Full Materials Supply — 120-Unit Estate',
-    client: 'Abuja North Development',
-    year: '2024', outcome: 'Zero delays across 18-month build',
-    bg: 'linear-gradient(145deg, #100E0A 0%, #2A1F08 100%)',
-    icon: '◒',
+    client: 'Kano North Development',
+    year: '2026', outcome: 'Zero delays across 18-month build',
+    img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=75&fit=crop',
   },
   {
     id: 3, category: 'electronics',
     title: 'Industrial UPS & Power Management',
-    client: 'Corporate Campus, Port Harcourt',
-    year: '2023', outcome: '100% uptime achieved post-installation',
-    bg: 'linear-gradient(145deg, #0A100E 0%, #082A1F 100%)',
-    icon: '◑',
+    client: 'Corporate Campus, Kano',
+    year: '2026', outcome: '100% uptime achieved post-installation',
+    img: 'https://images.unsplash.com/photo-1581092160607-ee22731c9c72?w=800&q=75&fit=crop',
   },
   {
     id: 4, category: 'solar',
     title: 'Off-Grid Solar + Battery Storage System',
-    client: 'Rural Electrification Initiative',
-    year: '2023', outcome: 'First power for 3,200 residents',
-    bg: 'linear-gradient(145deg, #0B0E1A 0%, #1A2040 100%)',
-    icon: '◐',
+    client: 'Rural Communities, Kano State',
+    year: '2026', outcome: 'First power for 3,200 residents',
+    img: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&q=75&fit=crop',
   },
   {
     id: 5, category: 'electronics',
     title: 'Electrical Components — Retail Chain',
-    client: '15 Locations, South-West Nigeria',
-    year: '2023', outcome: 'Consolidated supply, 40% cost reduction',
-    bg: 'linear-gradient(145deg, #100A0A 0%, #2A0E0E 100%)',
-    icon: '◑',
+    client: '10 Locations, Kano State',
+    year: '2026', outcome: 'Consolidated supply, 40% cost reduction',
+    img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=75&fit=crop',
   },
   {
     id: 6, category: 'materials',
     title: '5-Star Hotel Construction Supply',
-    client: 'Victoria Island, Lagos',
-    year: '2022', outcome: 'Delivered in 6 phases, on-schedule',
-    bg: 'linear-gradient(145deg, #0E0A10 0%, #250E2A 100%)',
-    icon: '◒',
+    client: 'City Centre, Kano',
+    year: '2026', outcome: 'Delivered in 6 phases, on-schedule',
+    img: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&q=75&fit=crop',
   },
 ]
 
@@ -143,27 +138,41 @@ export default function Projects() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: i * 0.08 }}
+                className="project-card"
                 style={{
                   background: 'var(--ink-2)', border: '1px solid var(--border)', borderRadius: 14, overflow: 'hidden',
                   transition: 'transform 0.35s var(--ease-out), box-shadow 0.35s, border-color 0.35s',
                   cursor: 'default',
                 }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = '0 20px 60px rgba(0,0,0,0.5)'; e.currentTarget.style.borderColor = 'var(--ember-border)' }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = '0 20px 60px rgba(0,0,0,0.4)'; e.currentTarget.style.borderColor = 'var(--ember-border)' }}
                 onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = 'var(--border)' }}
               >
-                {/* Visual */}
-                <div style={{ height: 180, background: p.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-                  <div style={{ fontFamily: 'var(--font-serif)', fontSize: '7rem', fontWeight: 300, color: 'rgba(255,255,255,0.06)', lineHeight: 1 }}>{p.icon}</div>
+                {/* Image */}
+                <div style={{ height: 200, position: 'relative', overflow: 'hidden' }}>
+                  <Image
+                    src={p.img}
+                    alt={p.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 360px"
+                    style={{ objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.16,1,0.3,1)' }}
+                    className="project-img"
+                  />
+                  {/* Gradient overlay for readability */}
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%)', pointerEvents: 'none' }} />
+                  {/* Category badge */}
                   <div style={{
                     position: 'absolute', top: '1rem', left: '1rem',
-                    fontFamily: 'var(--font-mono)', fontSize: '0.6rem', letterSpacing: '0.14em', textTransform: 'uppercase',
+                    fontFamily: 'var(--font-mono)', fontSize: '0.58rem', letterSpacing: '0.14em', textTransform: 'uppercase',
                     padding: '0.3rem 0.7rem', borderRadius: 3,
-                    background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(8px)', border: '1px solid var(--border)',
-                    color: 'var(--ember)',
+                    background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(8px)',
+                    border: '1px solid rgba(255,255,255,0.15)',
+                    color: 'white',
+                    fontWeight: 600,
                   }}>
-                    {p.category.charAt(0).toUpperCase() + p.category.slice(1)}
+                    {p.category === 'materials' ? 'Materials' : p.category.charAt(0).toUpperCase() + p.category.slice(1)}
                   </div>
                 </div>
+
                 {/* Body */}
                 <div style={{ padding: '1.5rem' }}>
                   <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: '0.92rem', color: 'var(--text-primary)', marginBottom: '0.4rem', lineHeight: 1.3 }}>{p.title}</div>
@@ -186,6 +195,10 @@ export default function Projects() {
           </motion.div>
         </AnimatePresence>
       </div>
+
+      <style>{`
+        .project-card:hover .project-img { transform: scale(1.06) !important; }
+      `}</style>
     </section>
   )
 }
