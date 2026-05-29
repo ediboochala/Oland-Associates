@@ -119,19 +119,6 @@ export default function Hero() {
       }}>OAE</div>
 
       <div style={{ position: 'relative', zIndex: 2, maxWidth: 1280, margin: '0 auto', padding: '0 clamp(1.25rem,4vw,3rem)', width: '100%' }}>
-        {/* Live badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', marginBottom: '2.5rem', padding: '0.4rem 1rem 0.4rem 0.6rem', borderRadius: 50, border: '1px solid rgba(232,99,10,0.2)', background: 'rgba(232,99,10,0.07)' }}
-        >
-          <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--ember)', display: 'block', boxShadow: '0 0 8px var(--ember)', animation: 'pulse 2.5s infinite' }} />
-          <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 600, fontSize: '0.74rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--ember-bright)' }}>
-            Accepting Project Briefs — 2025
-          </span>
-        </motion.div>
-
         {/* Main headline */}
         <div style={{ marginBottom: '2rem', overflow: 'hidden' }}>
           <motion.h1
