@@ -47,8 +47,8 @@ export default function Process() {
             <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--ember)', display: 'inline-block', flexShrink: 0 }} />
             Engagement Model
           </div>
-          <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2rem,4.5vw,4rem)', fontWeight: 600, lineHeight: 1.0, letterSpacing: '-0.02em', color: 'var(--text-primary)' }}>
-            From your first call<br />to your last handover —<br /><em style={{ fontStyle: 'italic', color: 'var(--ember-bright)' }}>we own it.</em>
+          <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.4rem,2.2vw,2rem)', fontWeight: 800, lineHeight: 1.15, letterSpacing: '0', color: 'var(--text-primary)' }}>
+            From your first call<br />to your last handover —<br /><em style={{ fontStyle: 'normal', color: 'var(--ember-bright)' }}>we own it.</em>
           </h2>
         </motion.div>
 

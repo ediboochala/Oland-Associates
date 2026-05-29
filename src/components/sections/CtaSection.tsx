@@ -21,7 +21,7 @@ export default function CtaSection() {
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: 'linear-gradient(90deg, transparent, var(--ember), transparent)' }} />
 
       {/* Decorative serif text */}
-      <div style={{ position: 'absolute', bottom: '-5%', left: '50%', transform: 'translateX(-50%)', fontFamily: 'var(--font-serif)', fontSize: 'clamp(8rem,20vw,18rem)', fontWeight: 300, color: 'var(--watermark)', lineHeight: 1, whiteSpace: 'nowrap', userSelect: 'none', pointerEvents: 'none', letterSpacing: '-0.04em' }}>
+      <div style={{ position: 'absolute', bottom: '-5%', left: '50%', transform: 'translateX(-50%)', fontFamily: 'var(--font-serif)', fontSize: 'clamp(5rem,12vw,11rem)', fontWeight: 300, color: 'var(--watermark)', lineHeight: 1, whiteSpace: 'nowrap', userSelect: 'none', pointerEvents: 'none', letterSpacing: '-0.04em' }}>
         Let's Build
       </div>
 
@@ -37,11 +37,11 @@ export default function CtaSection() {
             Begin Your Engagement
           </div>
           <h2 style={{
-            fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.5rem,6vw,6rem)',
-            fontWeight: 600, lineHeight: 0.92, letterSpacing: '-0.03em',
+            fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.8rem,3vw,2.6rem)',
+            fontWeight: 800, lineHeight: 1.15, letterSpacing: '0',
             color: 'var(--text-primary)', marginBottom: '1.5rem',
           }}>
-            Your next project<br />deserves a partner<br /><em style={{ color: 'var(--ember-bright)', fontStyle: 'italic' }}>who delivers.</em>
+            Your next project<br />deserves a partner<br /><em style={{ color: 'var(--ember-bright)', fontStyle: 'normal' }}>who delivers.</em>
           </h2>
           <p style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.75, marginBottom: '3rem', maxWidth: 520, margin: '0 auto 3rem' }}>
             Send us your project brief. We'll respond within 24 hours with a full proposal — scope, pricing, timeline, and projected outcomes. No sales pitch. Just a clear answer.

@@ -38,12 +38,12 @@ export default function Authority() {
                 The Distinction
               </div>
               <h2 style={{
-                fontFamily: 'var(--font-serif)', fontSize: 'clamp(2rem,4.5vw,4rem)',
-                fontWeight: 600, lineHeight: 1.0, letterSpacing: '-0.02em',
+                fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.4rem,2.2vw,2rem)',
+                fontWeight: 800, lineHeight: 1.15, letterSpacing: '0',
                 color: 'var(--text-primary)', marginBottom: '1.75rem',
               }}>
                 Your contractors deliver materials.<br />
-                <em style={{ color: 'var(--ember-bright)', fontStyle: 'italic' }}>We deliver certainty.</em>
+                <em style={{ color: 'var(--ember-bright)', fontStyle: 'normal' }}>We deliver certainty.</em>
               </h2>
               <p style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '1.25rem', maxWidth: 480 }}>
                 Developers and corporations who've worked with Oland Associates don't leave. Not because of loyalty programmes or discounts — because a partner who executes with this level of discipline is too rare to risk replacing.
@@ -86,8 +86,8 @@ export default function Authority() {
 
               <div style={{ position: 'relative' }}>
                 <div style={{
-                  fontFamily: 'var(--font-serif)', fontSize: 'clamp(4rem,8vw,7rem)',
-                  fontWeight: 300, lineHeight: 0.85, letterSpacing: '-0.04em',
+                  fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.5rem,5vw,4rem)',
+                  fontWeight: 700, lineHeight: 0.9, letterSpacing: '-0.02em',
                   color: 'rgba(37,25,89,0.6)', marginBottom: '-0.5rem',
                 }}>8</div>
                 <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 800, fontSize: '1rem', color: 'var(--text-primary)', marginBottom: '0.4rem' }}>
@@ -100,7 +100,7 @@ export default function Authority() {
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1px', background: 'var(--border)', borderRadius: 10, overflow: 'hidden' }}>
                   {metrics.map(m => (
                     <div key={m.label} style={{ background: 'var(--card-bg)', padding: '1.25rem' }}>
-                      <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.75rem', fontWeight: 600, color: 'var(--ember-bright)', letterSpacing: '-0.02em', lineHeight: 1 }}>{m.val}</div>
+                      <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem', fontWeight: 800, color: 'var(--ember-bright)', letterSpacing: '0', lineHeight: 1 }}>{m.val}</div>
                       <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6rem', color: 'var(--text-muted)', letterSpacing: '0.12em', textTransform: 'uppercase', marginTop: '0.35rem' }}>{m.label}</div>
                     </div>
                   ))}

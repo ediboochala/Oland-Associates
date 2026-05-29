@@ -80,9 +80,9 @@ export default function Services() {
             <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--ember)', display: 'inline-block', flexShrink: 0 }} />
             Three Pillars. One Standard.
           </div>
-          <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.2rem,5vw,4.5rem)', fontWeight: 600, lineHeight: 0.95, letterSpacing: '-0.02em', color: 'var(--text-primary)', marginBottom: '1.25rem' }}>
+          <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.4rem,2.2vw,2rem)', fontWeight: 800, lineHeight: 1.15, letterSpacing: '0', color: 'var(--text-primary)', marginBottom: '1.25rem' }}>
             Every service we offer is built on the same premise:<br />
-            <em style={{ color: 'var(--ember-bright)', fontStyle: 'italic' }}>no excuses, no shortcuts.</em>
+            <em style={{ color: 'var(--ember-bright)', fontStyle: 'normal' }}>no excuses, no shortcuts.</em>
           </h2>
         </motion.div>
 
@@ -115,7 +115,7 @@ export default function Services() {
               <div style={{ fontFamily: 'var(--font-sans)', fontSize: '1.75rem', color: 'var(--ember)', marginBottom: '1.5rem', lineHeight: 1 }}>{s.icon}</div>
 
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>{s.name}</div>
-              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.2rem,2vw,1.5rem)', fontWeight: 600, lineHeight: 1.25, color: 'var(--text-primary)', marginBottom: '1rem' }}>{s.headline}</h3>
+              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(0.95rem,1.4vw,1.1rem)', fontWeight: 700, lineHeight: 1.3, color: 'var(--text-primary)', marginBottom: '1rem' }}>{s.headline}</h3>
               <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.75, marginBottom: '1.75rem' }}>{s.body}</p>
 
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '2rem', flex: 1 }}>

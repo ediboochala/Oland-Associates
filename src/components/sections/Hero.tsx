@@ -112,7 +112,7 @@ export default function Hero() {
       {/* Large ambient text */}
       <div style={{
         position: 'absolute', right: '-3%', top: '50%', transform: 'translateY(-50%)',
-        fontFamily: 'var(--font-serif)', fontSize: 'clamp(14rem, 30vw, 28rem)',
+        fontFamily: 'var(--font-serif)', fontSize: 'clamp(8rem, 18vw, 16rem)',
         fontWeight: 300, color: 'var(--purple-ghost)', lineHeight: 1,
         userSelect: 'none', pointerEvents: 'none', letterSpacing: '-0.05em',
         whiteSpace: 'nowrap', transition: 'color 0.35s',
@@ -140,16 +140,16 @@ export default function Hero() {
             transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.4rem, 5.5vw, 5.5rem)',
-              fontWeight: 700,
-              lineHeight: 1.1,
-              letterSpacing: '-0.01em',
+              fontSize: 'clamp(1.8rem, 3vw, 2.6rem)',
+              fontWeight: 800,
+              lineHeight: 1.15,
+              letterSpacing: '0',
               color: 'var(--text-primary)',
-              maxWidth: '14ch',
+              maxWidth: '18ch',
             }}
           >
             We Build the<br />
-            <em style={{ fontStyle: 'italic', color: 'var(--ember-bright)' }}>Infrastructure</em><br />
+            <em style={{ fontStyle: 'normal', color: 'var(--ember-bright)' }}>Infrastructure</em><br />
             Nigeria Runs On.
           </motion.h1>
         </div>
@@ -160,8 +160,8 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.6 }}
           style={{
-            fontFamily: 'var(--font-sans)', fontWeight: 600,
-            fontSize: 'clamp(1.05rem, 1.7vw, 1.25rem)',
+            fontFamily: 'var(--font-sans)', fontWeight: 500,
+            fontSize: 'clamp(0.88rem, 1.2vw, 0.98rem)',
             color: 'var(--text-primary)', lineHeight: 1.8,
             maxWidth: 520, marginBottom: '2.75rem',
             opacity: 0.85,
@@ -227,7 +227,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 1.1 + i * 0.1 }}
             >
-              <div style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.3rem, 2vw, 1.75rem)', fontWeight: 700, color: 'var(--text-primary)', lineHeight: 1, letterSpacing: '-0.01em' }}>
+              <div style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.1rem, 1.5vw, 1.35rem)', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1, letterSpacing: '0' }}>
                 {s.value}
               </div>
               <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 500, fontSize: '0.62rem', color: 'var(--text-secondary)', letterSpacing: '0.14em', textTransform: 'uppercase', marginTop: '0.35rem' }}>

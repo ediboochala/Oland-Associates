@@ -57,8 +57,8 @@ export default function WhyUs() {
                 <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--ember)', display: 'inline-block', flexShrink: 0 }} />
                 The Case for Oland
               </div>
-              <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2rem,4.5vw,4rem)', fontWeight: 600, lineHeight: 1.0, letterSpacing: '-0.02em', color: 'var(--text-primary)' }}>
-                What separates us<br />isn't what we <em style={{ fontStyle: 'italic', color: 'var(--ember-bright)' }}>offer</em>.<br />It's what we <em style={{ fontStyle: 'italic' }}>guarantee</em>.
+              <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.4rem,2.2vw,2rem)', fontWeight: 800, lineHeight: 1.15, letterSpacing: '0', color: 'var(--text-primary)' }}>
+                What separates us<br />isn't what we <em style={{ fontStyle: 'normal', color: 'var(--ember-bright)' }}>offer</em>.<br />It's what we <em style={{ fontStyle: 'normal' }}>guarantee</em>.
               </h2>
             </motion.div>
 
