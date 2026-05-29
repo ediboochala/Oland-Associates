@@ -25,7 +25,7 @@ const projects = [
     title: 'Industrial UPS & Power Management',
     desc: 'Supply and integration of certified industrial UPS units and power conditioning systems to guarantee uninterrupted operations across a corporate campus.',
     outcome: '100% uptime achieved post-installation',
-    img: 'https://images.unsplash.com/photo-1581092160607-ee22731c9c72?w=800&q=75&fit=crop',
+    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=75&fit=crop',
   },
   {
     id: 4, category: 'solar',
