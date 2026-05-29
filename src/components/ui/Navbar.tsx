@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 
 const links = [
   { label: 'Services', href: '#services' },
@@ -47,17 +48,24 @@ export default function Navbar() {
       >
         <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 clamp(1.25rem, 4vw, 3rem)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           {/* Logo */}
-          <a href="#hero" onClick={(e) => { e.preventDefault(); scrollTo('#hero') }} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
+          <a href="#hero" onClick={(e) => { e.preventDefault(); scrollTo('#hero') }} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
             <div style={{
-              width: 38, height: 38, borderRadius: 9, flexShrink: 0,
-              background: 'linear-gradient(135deg, #E8630A 0%, #9B3506 100%)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontFamily: 'var(--font-serif)', fontSize: '1.35rem', color: 'white', fontWeight: 600,
-              boxShadow: '0 0 24px rgba(232,99,10,0.4)',
-            }}>O</div>
-            <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.15 }}>
-              <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 800, fontSize: '0.92rem', color: 'var(--text-primary)', letterSpacing: '0.01em' }}>Oland Associates</span>
-              <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 500, fontSize: '0.6rem', color: 'var(--text-muted)', letterSpacing: '0.18em', textTransform: 'uppercase' }}>Enterprises</span>
+              background: 'white',
+              borderRadius: 8,
+              padding: '5px 10px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 2px 16px rgba(0,0,0,0.35)',
+            }}>
+              <Image
+                src="/Oland logo.png"
+                alt="Oland Associates Enterprises"
+                width={148}
+                height={40}
+                style={{ objectFit: 'contain', display: 'block' }}
+                priority
+              />
             </div>
           </a>
 

@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 const navLinks = [
   { label: 'Services', href: '#services' },
   { label: 'Why Us', href: '#why' },
@@ -37,11 +39,23 @@ export default function Footer() {
 
           {/* Brand */}
           <div style={{ gridColumn: 'span 1' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-              <div style={{ width: 36, height: 36, borderRadius: 9, background: 'linear-gradient(135deg, #E8630A, #9B3506)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-serif)', fontSize: '1.3rem', color: 'white', fontWeight: 600, boxShadow: '0 0 20px rgba(232,99,10,0.35)' }}>O</div>
-              <div style={{ lineHeight: 1.15 }}>
-                <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 800, fontSize: '0.88rem', color: 'var(--text-primary)' }}>Oland Associates</div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 500, fontSize: '0.58rem', color: 'var(--text-muted)', letterSpacing: '0.18em', textTransform: 'uppercase' }}>Enterprises</div>
+            <div style={{ marginBottom: '1.25rem' }}>
+              <div style={{
+                display: 'inline-flex',
+                background: 'white',
+                borderRadius: 8,
+                padding: '6px 12px',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 2px 16px rgba(0,0,0,0.35)',
+              }}>
+                <Image
+                  src="/Oland logo.png"
+                  alt="Oland Associates Enterprises"
+                  width={160}
+                  height={44}
+                  style={{ objectFit: 'contain', display: 'block' }}
+                />
               </div>
             </div>
             <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.83rem', color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '1.5rem', maxWidth: 280 }}>
