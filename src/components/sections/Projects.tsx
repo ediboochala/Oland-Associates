@@ -9,43 +9,43 @@ const projects = [
   {
     id: 1, category: 'solar',
     title: '200kW Commercial Rooftop Solar',
-    client: 'Kano Commercial District',
-    year: '2026', outcome: '72% reduction in energy costs',
+    desc: 'Full design, supply, and installation of a grid-tied rooftop solar system eliminating diesel dependency across a multi-building office complex.',
+    outcome: '72% reduction in energy costs',
     img: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=75&fit=crop',
   },
   {
     id: 2, category: 'materials',
     title: 'Full Materials Supply — 120-Unit Estate',
-    client: 'Kano North Development',
-    year: '2026', outcome: 'Zero delays across 18-month build',
+    desc: 'End-to-end procurement and phased delivery of structural steel, cement, roofing, and finishing materials across an 18-month residential build.',
+    outcome: 'Zero delays across 18-month build',
     img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=75&fit=crop',
   },
   {
     id: 3, category: 'electronics',
     title: 'Industrial UPS & Power Management',
-    client: 'Corporate Campus, Kano',
-    year: '2026', outcome: '100% uptime achieved post-installation',
+    desc: 'Supply and integration of certified industrial UPS units and power conditioning systems to guarantee uninterrupted operations across a corporate campus.',
+    outcome: '100% uptime achieved post-installation',
     img: 'https://images.unsplash.com/photo-1581092160607-ee22731c9c72?w=800&q=75&fit=crop',
   },
   {
     id: 4, category: 'solar',
     title: 'Off-Grid Solar + Battery Storage System',
-    client: 'Rural Communities, Kano State',
-    year: '2026', outcome: 'First power for 3,200 residents',
+    desc: 'Design and deployment of a standalone solar-plus-storage microgrid bringing reliable electricity to underserved rural communities for the first time.',
+    outcome: 'First power for 3,200 residents',
     img: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&q=75&fit=crop',
   },
   {
     id: 5, category: 'electronics',
     title: 'Electrical Components — Retail Chain',
-    client: '10 Locations, Kano State',
-    year: '2026', outcome: 'Consolidated supply, 40% cost reduction',
+    desc: 'Consolidated authenticated electrical component supply across multiple retail outlets, replacing fragmented grey-market sourcing with a single certified pipeline.',
+    outcome: 'Consolidated supply, 40% cost reduction',
     img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=75&fit=crop',
   },
   {
     id: 6, category: 'materials',
     title: '5-Star Hotel Construction Supply',
-    client: 'City Centre, Kano',
-    year: '2026', outcome: 'Delivered in 6 phases, on-schedule',
+    desc: 'Premium-grade structural and finishing materials supplied in six coordinated phases — tiles, cladding, plumbing, and steel — aligned to a live construction schedule.',
+    outcome: 'Delivered in 6 phases, on-schedule',
     img: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&q=75&fit=crop',
   },
 ]
@@ -175,12 +175,8 @@ export default function Projects() {
 
                 {/* Body */}
                 <div style={{ padding: '1.5rem' }}>
-                  <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: '0.92rem', color: 'var(--text-primary)', marginBottom: '0.4rem', lineHeight: 1.3 }}>{p.title}</div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', color: 'var(--text-muted)' }}>{p.client}</span>
-                    <span style={{ width: 2, height: 2, borderRadius: '50%', background: 'var(--text-muted)', display: 'inline-block' }} />
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', color: 'var(--text-muted)' }}>{p.year}</span>
-                  </div>
+                  <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: '0.92rem', color: 'var(--text-primary)', marginBottom: '0.5rem', lineHeight: 1.3 }}>{p.title}</div>
+                  <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.78rem', color: 'var(--text-secondary)', lineHeight: 1.65, marginBottom: '1rem' }}>{p.desc}</p>
                   <div style={{
                     display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
                     padding: '0.35rem 0.75rem', borderRadius: 3,
