@@ -1,7 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
-
 const clients = [
   'VERDE PROPERTIES', 'APEX CONSTRUCTION GROUP', 'NEXGEN REALTY',
   'SUNBRIDGE CAPITAL', 'METRO DEVELOPERS', 'PINNACLE HOLDINGS',

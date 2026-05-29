@@ -14,11 +14,6 @@ export default function CtaSection() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
 
-  const scrollToContact = () => {
-    const el = document.querySelector('#contact-form')
-    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' })
-  }
-
   return (
     <section id="contact" ref={ref} style={{ padding: 'clamp(5rem,10vw,9rem) 0', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, var(--ink-3) 0%, var(--ink) 50%, rgba(37,25,89,0.2) 100%)' }} />

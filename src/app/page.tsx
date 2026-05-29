@@ -1,5 +1,6 @@
 import Navbar from '@/components/ui/Navbar'
 import Hero from '@/components/sections/Hero'
+import TrustBar from '@/components/sections/TrustBar'
 import Authority from '@/components/sections/Authority'
 import Services from '@/components/sections/Services'
 import WhyUs from '@/components/sections/WhyUs'
@@ -14,6 +15,7 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
+      <TrustBar />
       <Authority />
       <Services />
       <WhyUs />
