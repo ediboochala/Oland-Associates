@@ -78,8 +78,8 @@ export default function Navbar() {
             <Image
               src="/Oland logo wh.png"
               alt="Oland Associates Enterprises"
-              width={148}
-              height={40}
+              width={200}
+              height={54}
               style={{
                 objectFit: 'contain',
                 display: 'block',
