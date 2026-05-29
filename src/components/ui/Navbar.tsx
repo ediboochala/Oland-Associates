@@ -75,24 +75,19 @@ export default function Navbar() {
         <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 clamp(1.25rem, 4vw, 3rem)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           {/* Logo */}
           <a href="#hero" onClick={(e) => { e.preventDefault(); scrollTo('#hero') }} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
-            <div style={{
-              background: 'white',
-              borderRadius: 8,
-              padding: '5px 10px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              boxShadow: '0 2px 16px rgba(0,0,0,0.35)',
-            }}>
-              <Image
-                src="/Oland logo.png"
-                alt="Oland Associates Enterprises"
-                width={148}
-                height={40}
-                style={{ objectFit: 'contain', display: 'block' }}
-                priority
-              />
-            </div>
+            <Image
+              src="/Oland logo wh.png"
+              alt="Oland Associates Enterprises"
+              width={148}
+              height={40}
+              style={{
+                objectFit: 'contain',
+                display: 'block',
+                filter: theme === 'dark' ? 'brightness(0) invert(1)' : 'none',
+                transition: 'filter 0.35s ease',
+              }}
+              priority
+            />
           </a>
 
           {/* Desktop links */}

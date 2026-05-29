@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { useTheme } from '@/lib/theme-context'
 
 const navLinks = [
   { label: 'Services', href: '#services' },
@@ -25,6 +26,7 @@ const socials = [
 ]
 
 export default function Footer() {
+  const { theme } = useTheme()
   const scrollTo = (href: string) => {
     const el = document.querySelector(href)
     if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' })
@@ -40,23 +42,18 @@ export default function Footer() {
           {/* Brand */}
           <div style={{ gridColumn: 'span 1' }}>
             <div style={{ marginBottom: '1.25rem' }}>
-              <div style={{
-                display: 'inline-flex',
-                background: 'white',
-                borderRadius: 8,
-                padding: '6px 12px',
-                alignItems: 'center',
-                justifyContent: 'center',
-                boxShadow: '0 2px 16px rgba(0,0,0,0.35)',
-              }}>
-                <Image
-                  src="/Oland logo.png"
-                  alt="Oland Associates Enterprises"
-                  width={160}
-                  height={44}
-                  style={{ objectFit: 'contain', display: 'block' }}
-                />
-              </div>
+              <Image
+                src="/Oland logo wh.png"
+                alt="Oland Associates Enterprises"
+                width={160}
+                height={44}
+                style={{
+                  objectFit: 'contain',
+                  display: 'block',
+                  filter: theme === 'dark' ? 'brightness(0) invert(1)' : 'none',
+                  transition: 'filter 0.35s ease',
+                }}
+              />
             </div>
             <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.83rem', color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '1.5rem', maxWidth: 280 }}>
               Solar energy. Electronics supply. Building materials. One partner for every project that demands precision.
