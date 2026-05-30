@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { useTheme } from '@/lib/theme-context'
 
 const stats = [
-  { value: '8+', label: 'Years Operating' },
+  { value: '23+', label: 'Years Operating' },
   { value: '₦2B+', label: 'Contract Value' },
   { value: '200+', label: 'Projects Executed' },
   { value: '99%', label: 'On-Time Delivery' },

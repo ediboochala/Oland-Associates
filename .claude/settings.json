@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:unsplash.com)",
+      "WebFetch(domain:www.pexels.com)",
+      "Bash(git -C \"c:\\\\Users\\\\Ochala Edibo\\\\Documents\\\\oland-associates\" log --oneline -3)",
+      "Bash(git -C \"c:\\\\Users\\\\Ochala Edibo\\\\Documents\\\\oland-associates\" add next.config.js src/app/globals.css src/app/layout.tsx src/components/sections/CtaSection.tsx src/components/sections/Hero.tsx src/components/sections/Projects.tsx src/components/ui/Footer.tsx src/components/ui/Navbar.tsx src/lib/animations.ts src/app/contact/ src/app/founders/ src/components/ui/WhatsAppFloat.tsx)",
+      "Bash(git -C 'c:\\\\Users\\\\Ochala Edibo\\\\Documents\\\\oland-associates' commit -m ' *)",
+      "Bash(git -C \"c:\\\\Users\\\\Ochala Edibo\\\\Documents\\\\oland-associates\" push)",
+      "Bash(git -C \"c:\\\\Users\\\\Ochala Edibo\\\\Documents\\\\oland-associates\" remote -v)",
+      "Bash(git -C \"c:\\\\Users\\\\Ochala Edibo\\\\Documents\\\\oland-associates\" push --set-upstream origin main)"
+    ]
+  }
+}

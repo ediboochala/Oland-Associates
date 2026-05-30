@@ -89,12 +89,12 @@ export default function Authority() {
                   fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.5rem,5vw,4rem)',
                   fontWeight: 700, lineHeight: 0.9, letterSpacing: '-0.02em',
                   color: 'rgba(37,25,89,0.6)', marginBottom: '-0.5rem',
-                }}>8</div>
+                }}>23</div>
                 <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 800, fontSize: '1rem', color: 'var(--text-primary)', marginBottom: '0.4rem' }}>
                   Years of Flawless Execution
                 </div>
                 <div style={{ fontFamily: 'var(--font-sans)', fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '2.5rem' }}>
-                  Trusted across Lagos, Abuja, Port Harcourt and beyond.
+                  Trusted across Kano, Kaduna, Abuja and beyond.
                 </div>
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1px', background: 'var(--border)', borderRadius: 10, overflow: 'hidden' }}>
