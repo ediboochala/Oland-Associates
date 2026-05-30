@@ -49,7 +49,7 @@ export default function CtaSection() {
 
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
             <a
-              href="mailto:info@olandassociates.com"
+              href="/contact"
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '0.6rem',
                 fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: '0.82rem', letterSpacing: '0.1em', textTransform: 'uppercase',
@@ -66,7 +66,7 @@ export default function CtaSection() {
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </a>
             <a
-              href="tel:+2348000000000"
+              href="tel:+2348029046161"
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
                 fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.82rem', letterSpacing: '0.1em', textTransform: 'uppercase',

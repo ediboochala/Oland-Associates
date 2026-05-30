@@ -1,14 +1,16 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter, usePathname } from 'next/navigation'
 import { useTheme } from '@/lib/theme-context'
 
 const navLinks = [
-  { label: 'Services', href: '#services' },
-  { label: 'Why Us', href: '#why' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Process', href: '#process' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Services', href: '#services', type: 'scroll' },
+  { label: 'Why Us', href: '#why', type: 'scroll' },
+  { label: 'Projects', href: '#projects', type: 'scroll' },
+  { label: 'Founders', href: '/founders', type: 'page' },
+  { label: 'Contact', href: '/contact', type: 'page' },
 ]
 
 const services = [
@@ -19,17 +21,64 @@ const services = [
 ]
 
 const socials = [
-  { label: 'LI', name: 'LinkedIn', href: '#' },
-  { label: '𝕏', name: 'Twitter/X', href: '#' },
-  { label: 'IG', name: 'Instagram', href: '#' },
-  { label: 'WA', name: 'WhatsApp', href: '#' },
+  {
+    label: 'FB',
+    name: 'Facebook',
+    href: 'https://facebook.com',
+    icon: (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'IG',
+    name: 'Instagram',
+    href: 'https://instagram.com',
+    icon: (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'WA',
+    name: 'WhatsApp',
+    href: 'https://wa.me/2348029046161',
+    icon: (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'GM',
+    name: 'Gmail',
+    href: 'mailto:olandassociateenterprises@gmail.com',
+    icon: (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+      </svg>
+    ),
+  },
 ]
 
 export default function Footer() {
   const { theme } = useTheme()
-  const scrollTo = (href: string) => {
-    const el = document.querySelector(href)
-    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' })
+  const router = useRouter()
+  const pathname = usePathname()
+
+  const handleNavClick = (href: string, type: string) => {
+    if (type === 'page') {
+      router.push(href)
+      return
+    }
+    if (pathname === '/') {
+      const el = document.querySelector(href)
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' })
+    } else {
+      router.push(`/${href}`)
+    }
   }
 
   return (
@@ -50,6 +99,8 @@ export default function Footer() {
                 style={{
                   objectFit: 'contain',
                   display: 'block',
+                  width: 'clamp(130px, 20vw, 220px)',
+                  height: 'auto',
                   filter: theme === 'dark' ? 'brightness(0) invert(1)' : 'none',
                   transition: 'filter 0.35s ease',
                 }}
@@ -58,19 +109,19 @@ export default function Footer() {
             <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.83rem', color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '1.5rem', maxWidth: 280 }}>
               Solar energy. Electronics supply. Building materials. One partner for every project that demands precision.
             </p>
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
+            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
               {socials.map(s => (
-                <a key={s.name} href={s.href} aria-label={s.name}
+                <a key={s.name} href={s.href} aria-label={s.name} target={s.href.startsWith('http') ? '_blank' : undefined} rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   style={{
-                    width: 32, height: 32, borderRadius: 6, border: '1px solid var(--border)',
+                    width: 34, height: 34, borderRadius: 7, border: '1px solid var(--border)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontFamily: 'var(--font-mono)', fontSize: '0.6rem', color: 'var(--text-muted)',
+                    color: 'var(--text-muted)',
                     transition: 'all 0.2s', textDecoration: 'none',
                   }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--ember)'; (e.currentTarget as HTMLElement).style.color = 'var(--ember)' }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--border)'; (e.currentTarget as HTMLElement).style.color = 'var(--text-muted)' }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--ember)'; (e.currentTarget as HTMLElement).style.color = 'var(--ember)'; (e.currentTarget as HTMLElement).style.background = 'var(--ember-pale)' }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--border)'; (e.currentTarget as HTMLElement).style.color = 'var(--text-muted)'; (e.currentTarget as HTMLElement).style.background = 'transparent' }}
                 >
-                  {s.label}
+                  {s.icon}
                 </a>
               ))}
             </div>
@@ -82,7 +133,7 @@ export default function Footer() {
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
               {navLinks.map(l => (
                 <li key={l.href}>
-                  <button onClick={() => scrollTo(l.href)}
+                  <button onClick={() => handleNavClick(l.href, l.type)}
                     style={{ fontFamily: 'var(--font-sans)', fontSize: '0.85rem', color: 'var(--text-secondary)', background: 'none', border: 'none', cursor: 'pointer', padding: 0, transition: 'color 0.2s' }}
                     onMouseEnter={e => (e.currentTarget.style.color = 'var(--ember-bright)')}
                     onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
@@ -98,7 +149,7 @@ export default function Footer() {
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
               {services.map(s => (
                 <li key={s}>
-                  <button onClick={() => scrollTo('#services')}
+                  <button onClick={() => handleNavClick('#services', 'scroll')}
                     style={{ fontFamily: 'var(--font-sans)', fontSize: '0.85rem', color: 'var(--text-secondary)', background: 'none', border: 'none', cursor: 'pointer', padding: 0, transition: 'color 0.2s' }}
                     onMouseEnter={e => (e.currentTarget.style.color = 'var(--ember-bright)')}
                     onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
@@ -113,9 +164,9 @@ export default function Footer() {
             <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.58rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '1.25rem' }}>Get in Touch</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.875rem' }}>
               {[
-                { icon: '→', label: 'info@olandassociates.com', href: 'mailto:info@olandassociates.com' },
-                { icon: '→', label: '+234 800 000 0000', href: 'tel:+2348000000000' },
-                { icon: '→', label: 'Abuja & Lagos, Nigeria', href: '#' },
+                { icon: '→', label: 'olandassociateenterprises@gmail.com', href: 'mailto:olandassociateenterprises@gmail.com' },
+                { icon: '→', label: '+234 802 904 6161', href: 'tel:+2348029046161' },
+                { icon: '→', label: 'No 62 France Road by Kano Pillars Stadium, Kano', href: '#' },
               ].map(c => (
                 <a key={c.label} href={c.href}
                   style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontFamily: 'var(--font-sans)', fontSize: '0.83rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }}
@@ -129,7 +180,7 @@ export default function Footer() {
             </div>
             <div style={{ marginTop: '1.5rem' }}>
               <button
-                onClick={() => scrollTo('#contact')}
+                onClick={() => handleNavClick('/contact', 'page')}
                 style={{
                   fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: '0.72rem', letterSpacing: '0.1em', textTransform: 'uppercase',
                   padding: '0.75rem 1.5rem', borderRadius: 3,

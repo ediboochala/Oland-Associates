@@ -3,15 +3,17 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter, usePathname } from 'next/navigation'
 import { useTheme } from '@/lib/theme-context'
 
 const links = [
-  { label: 'Services', href: '#services' },
-  { label: 'Why Us', href: '#why' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Process', href: '#process' },
-  { label: 'Contact', href: '#contact' },
-]
+  { label: 'Services', href: '#services', type: 'scroll' },
+  { label: 'Why Us', href: '#why', type: 'scroll' },
+  { label: 'Projects', href: '#projects', type: 'scroll' },
+  { label: 'Founders', href: '/founders', type: 'page' },
+  { label: 'Contact', href: '/contact', type: 'page' },
+] as const
 
 function SunIcon() {
   return (
@@ -41,6 +43,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const { theme, toggle } = useTheme()
+  const router = useRouter()
+  const pathname = usePathname()
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 50)
@@ -48,13 +52,27 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
-  const scrollTo = (href: string) => {
-    const el = document.querySelector(href)
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.scrollY - 80
-      window.scrollTo({ top, behavior: 'smooth' })
-    }
+  const handleNavClick = (href: string, type: string) => {
     setMobileOpen(false)
+    if (type === 'page') {
+      router.push(href)
+      return
+    }
+    // scroll type
+    if (pathname === '/') {
+      const el = document.querySelector(href)
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 80
+        window.scrollTo({ top, behavior: 'smooth' })
+      }
+    } else {
+      router.push(`/${href}`)
+    }
+  }
+
+  const isActive = (href: string, type: string) => {
+    if (type === 'page') return pathname === href
+    return false
   }
 
   return (
@@ -74,7 +92,7 @@ export default function Navbar() {
       >
         <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 clamp(1.25rem, 4vw, 3rem)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           {/* Logo */}
-          <a href="#hero" onClick={(e) => { e.preventDefault(); scrollTo('#hero') }} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+          <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
             <Image
               src="/Oland logo wh.png"
               alt="Oland Associates Enterprises"
@@ -83,28 +101,38 @@ export default function Navbar() {
               style={{
                 objectFit: 'contain',
                 display: 'block',
+                width: 'clamp(120px, 18vw, 210px)',
+                height: 'auto',
                 filter: theme === 'dark' ? 'brightness(0) invert(1)' : 'none',
                 transition: 'filter 0.35s ease',
               }}
               priority
             />
-          </a>
+          </Link>
 
           {/* Desktop links */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }} className="nav-desktop">
-            {links.map(link => (
-              <button key={link.href} onClick={() => scrollTo(link.href)} style={{
-                fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.78rem',
-                letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-secondary)',
-                transition: 'color 0.2s', background: 'none', border: 'none', cursor: 'pointer',
-                padding: '0.25rem 0',
-              }}
-              onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-primary)')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
-              >
-                {link.label}
-              </button>
-            ))}
+            {links.map(link => {
+              const active = isActive(link.href, link.type)
+              return (
+                <button
+                  key={link.href}
+                  onClick={() => handleNavClick(link.href, link.type)}
+                  style={{
+                    fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.78rem',
+                    letterSpacing: '0.1em', textTransform: 'uppercase',
+                    color: active ? 'var(--ember-bright)' : 'var(--text-secondary)',
+                    transition: 'color 0.2s', background: 'none', border: 'none', cursor: 'pointer',
+                    padding: '0.25rem 0',
+                    borderBottom: active ? '1px solid var(--ember)' : '1px solid transparent',
+                  }}
+                  onMouseEnter={e => { if (!active) e.currentTarget.style.color = 'var(--text-primary)' }}
+                  onMouseLeave={e => { if (!active) e.currentTarget.style.color = 'var(--text-secondary)' }}
+                >
+                  {link.label}
+                </button>
+              )
+            })}
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
@@ -128,7 +156,7 @@ export default function Navbar() {
             </button>
 
             <button
-              onClick={() => scrollTo('#contact')}
+              onClick={() => handleNavClick('/contact', 'page')}
               style={{
                 fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: '0.78rem',
                 letterSpacing: '0.1em', textTransform: 'uppercase',
@@ -136,6 +164,7 @@ export default function Navbar() {
                 background: 'var(--ember)', color: 'white',
                 boxShadow: '0 0 28px rgba(232,99,10,0.35)',
                 transition: 'all 0.3s ease',
+                border: 'none', cursor: 'pointer',
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.background = 'var(--ember-bright)'
@@ -183,13 +212,18 @@ export default function Navbar() {
             }}
           >
             {links.map(link => (
-              <button key={link.href} onClick={() => scrollTo(link.href)} style={{
-                fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: '1.1rem',
-                letterSpacing: '0.06em', textTransform: 'uppercase',
-                color: 'var(--text-primary)', background: 'none', border: 'none',
-                cursor: 'pointer', textAlign: 'left', padding: '0.5rem 0',
-                borderBottom: '1px solid var(--border)',
-              }}>
+              <button
+                key={link.href}
+                onClick={() => handleNavClick(link.href, link.type)}
+                style={{
+                  fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: '1.1rem',
+                  letterSpacing: '0.06em', textTransform: 'uppercase',
+                  color: isActive(link.href, link.type) ? 'var(--ember-bright)' : 'var(--text-primary)',
+                  background: 'none', border: 'none',
+                  cursor: 'pointer', textAlign: 'left', padding: '0.5rem 0',
+                  borderBottom: '1px solid var(--border)',
+                }}
+              >
                 {link.label}
               </button>
             ))}

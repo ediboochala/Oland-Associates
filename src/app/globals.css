@@ -146,3 +146,87 @@ ul { list-style: none; }
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--ink); }
 ::-webkit-scrollbar-thumb { background: var(--purple-mid); border-radius: 2px; }
+
+/* ── Keyframe animations ─────────────────────────────────────────────── */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes float-y-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(2deg); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes shimmer-sweep {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(200%) skewX(-15deg); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes gradient-text-pan {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes count-up-blur {
+  from { filter: blur(8px); opacity: 0; transform: translateY(8px); }
+  to { filter: blur(0); opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes border-dance {
+  0%, 100% { border-color: var(--ember-border); }
+  50% { border-color: var(--ember); }
+}
+
+/* ── Animated gradient text helper ──────────────────────────────────────── */
+.gradient-text-animated {
+  background: linear-gradient(90deg, var(--ember), var(--ember-bright), #F59E0B, var(--ember), var(--ember-bright));
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-text-pan 4s ease infinite;
+}
+
+/* ── Form field base ─────────────────────────────────────────────────── */
+.oae-input {
+  width: 100%;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.9rem 1.1rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.oae-input:focus {
+  border-color: var(--ember);
+  background: var(--surface-2);
+  box-shadow: 0 0 0 3px rgba(232,99,10,0.12);
+}
+.oae-input::placeholder { color: var(--text-muted); }
+.oae-input option { background: var(--ink-2); color: var(--text-primary); }

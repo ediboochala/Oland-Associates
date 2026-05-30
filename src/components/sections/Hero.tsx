@@ -165,8 +165,8 @@ export default function Hero() {
           transition={{ duration: 0.9, delay: 0.75 }}
           style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '5rem' }}
         >
-          <button
-            onClick={() => { const el = document.querySelector('#contact'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' }) }}
+          <a
+            href="/contact"
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '0.6rem',
               fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: '0.8rem',
@@ -175,14 +175,14 @@ export default function Hero() {
               background: 'var(--ember)', color: 'white',
               boxShadow: '0 0 36px rgba(232,99,10,0.4)',
               transition: 'all 0.3s',
-              border: 'none', cursor: 'pointer',
+              textDecoration: 'none',
             }}
             onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 0 56px rgba(232,99,10,0.6)'; e.currentTarget.style.transform = 'translateY(-2px)' }}
             onMouseLeave={e => { e.currentTarget.style.boxShadow = '0 0 36px rgba(232,99,10,0.4)'; e.currentTarget.style.transform = 'translateY(0)' }}
           >
             Submit Project Brief
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </button>
+          </a>
           <button
             onClick={() => { const el = document.querySelector('#services'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' }) }}
             style={{

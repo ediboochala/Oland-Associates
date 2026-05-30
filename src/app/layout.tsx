@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import './globals.css'
 import { ThemeProvider } from '@/lib/theme-context'
+import WhatsAppFloat from '@/components/ui/WhatsAppFloat'
 
 export const metadata: Metadata = {
   title: 'Oland Associates Enterprises — Infrastructure & Energy Solutions',
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <ThemeProvider>
           {children}
+          <WhatsAppFloat />
         </ThemeProvider>
       </body>
     </html>
